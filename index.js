@@ -1,6 +1,7 @@
 const express = require('express');
 const serverless = require('serverless-http');
 const app = express();
+const port=process.env.PORT || 3000;
 
 // Basic route to test the function
 app.get('/', (req, res) => {
@@ -11,4 +12,6 @@ app.get('/', (req, res) => {
 });
 
 // Wrap the express app with serverless-http
-module.exports.handler = serverless(app);
+app.listen(port, () => {        
+  console.log(`Server running on port ${port}`);
+} );  
