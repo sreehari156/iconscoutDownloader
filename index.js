@@ -1,27 +1,15 @@
-
-const express = require("express");
-
-
+const express = require('express');
 const app = express();
-const port = 3000||process.env.PORT;
 
-
-
-// Helper: Get a browser instance
-
-
-// Middleware
-app.use(express.json());
-
-// Routes
-app.get("/", (req, res) => {
-  res.send({ message: "Welcome to the API!" });
+// Basic route to test the function
+app.get('/', (req, res) => {
+  res.json({
+    status: 'success',
+    message: 'Hello, World from Appwrite Express function!',
+  });
 });
 
-
-
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
-
-// Serverless Handler
+// Handling HTTP requests from Appwrite functions
+module.exports = async function (req, res) {
+  app(req, res);  // Pass the request and response to Express
+};
